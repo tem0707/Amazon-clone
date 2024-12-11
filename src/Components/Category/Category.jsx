@@ -1,16 +1,16 @@
 import React from "react";
 import { catagoryData } from "./CategoryFunction";
-import CatagoryCard from "./CategoryCard";
+import CategoryCard from "./CategoryCard";
 import styles from "./category.module.css";
 
-function Catagory() {
+function Category() {
   return (
     <section className={styles.category_container}>
       {catagoryData.map((infos, i) => (
-        <CatagoryCard key={i} data={infos} />
+        <CategoryCard key={i} data={infos} />
       ))}
     </section>
   );
 }
 
-export default Catagory;
+export default Category;
