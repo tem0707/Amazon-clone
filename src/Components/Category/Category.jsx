@@ -1,7 +1,7 @@
 import React from "react";
 import { catagoryData } from "./CategoryFunction";
 import CatagoryCard from "./CategoryCard";
-import styles from "./Category.module.css";
+import styles from "./category.module.css";
 
 function Catagory() {
   return (
