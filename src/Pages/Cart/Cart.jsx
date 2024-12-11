@@ -4,28 +4,30 @@ import { DataContext } from "../../Components/DataProvider/DataProvider";
 import ProductCard from "../../Components/Product/ProductCard";
 import CurrencyFormat from "../../Components/CurrencyFormat/CurrencyFormat";
 import { Link } from "react-router-dom";
-import classes from "./cart.module.css"
+import classes from "./Cart.module.css";
 import { Type } from "../../Utility/action.type";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { MdOutlineKeyboardArrowUp } from "react-icons/md";
 function Cart() {
-  const [{ basket}, dispatch] = useContext(DataContext);
-  
-    const total = basket.reduce((amount, item) => {
-      return item.price * item.amount + amount;
-    }, 0);
+  const [{ basket }, dispatch] = useContext(DataContext);
 
-    const increment = (item)=>{
-      dispatch({
-        type: Type.ADD_TO_BASKET,item
-      })
-    }
+  const total = basket.reduce((amount, item) => {
+    return item.price * item.amount + amount;
+  }, 0);
 
-    const decrement = (id)=>{
-      dispatch({
-        type: Type.REMOVE_FROM_BASKET,id
-      })
-    }
+  const increment = (item) => {
+    dispatch({
+      type: Type.ADD_TO_BASKET,
+      item,
+    });
+  };
+
+  const decrement = (id) => {
+    dispatch({
+      type: Type.REMOVE_FROM_BASKET,
+      id,
+    });
+  };
   return (
     <Layout>
       <section className={classes.container}>
@@ -49,11 +51,11 @@ function Cart() {
                   />
                   <div className={classes.btn_container}>
                     <button onClick={() => increment(item)}>
-                      <MdOutlineKeyboardArrowUp size={30}/>
+                      <MdOutlineKeyboardArrowUp size={30} />
                     </button>
                     <span>{item.amount}</span>
                     <button onClick={() => decrement(item.id)}>
-                      <MdKeyboardArrowDown size={30}/>
+                      <MdKeyboardArrowDown size={30} />
                     </button>
                   </div>
                 </section>
